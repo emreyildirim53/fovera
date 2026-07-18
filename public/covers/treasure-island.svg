@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title author">
+  <title>Treasure Island</title>
+  <desc>Original cover artwork with title and author.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#071a2f"/>
+      <stop offset="55%" stop-color="#0f4c75"/>
+      <stop offset="100%" stop-color="#3282b8"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="120" cy="140" r="54" fill="#f6d365"/>
+  <path d="M40 498c70-62 136-82 204-56 66 24 106 26 160 10 40-12 84-10 156 12v194H40z" fill="#0b132b"/>
+  <path d="M156 434l134-122 56 62-128 122z" fill="#e2c275"/>
+  <path d="M246 354l40-36 88 96-40 36z" fill="#b98d45"/>
+  <circle cx="408" cy="250" r="74" fill="none" stroke="#d9d9d9" stroke-width="12" opacity="0.88"/>
+  <path d="M408 188v124M346 250h124" stroke="#d9d9d9" stroke-width="12" opacity="0.88"/>
+  <text x="56" y="630" fill="#f6fbff" font-size="54" font-family="Georgia, serif" font-weight="700">Treasure Island</text>
+  <text x="58" y="700" fill="#d2ecff" font-size="24" font-family="Arial, sans-serif" letter-spacing="2">ROBERT LOUIS STEVENSON</text>
+</svg>

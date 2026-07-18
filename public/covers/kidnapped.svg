@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1600" viewBox="0 0 1200 1600" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1B3158"/>
+      <stop offset="55%" stop-color="#2F5AA7"/>
+      <stop offset="100%" stop-color="#0C1423"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(960 240) rotate(120) scale(620 540)">
+      <stop offset="0%" stop-color="rgba(239, 203, 104, 0.58)"/>
+      <stop offset="100%" stop-color="rgba(239, 203, 104, 0)"/>
+    </radialGradient>
+    <linearGradient id="stripe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255, 255, 255, 0.08)"/>
+      <stop offset="100%" stop-color="rgba(255, 255, 255, 0)"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="1600" fill="url(#bg)"/>
+  <rect width="1200" height="1600" fill="url(#glow)"/>
+  <circle cx="980" cy="270" r="210" fill="rgba(255, 255, 255, 0.08)" filter="url(#soft)"/>
+  <path d="M0 1110C175 980 335 920 480 930C655 940 822 1135 1200 1060V1600H0V1110Z" fill="rgba(5, 7, 12, 0.38)"/>
+  <path d="M118 1188C300 1048 470 1002 628 1020C796 1040 938 1156 1108 1116" stroke="rgba(255, 255, 255, 0.13)" stroke-width="4"/>
+  <path d="M126 1236C320 1102 488 1064 630 1082C778 1100 934 1212 1074 1182" stroke="rgba(255, 255, 255, 0.06)" stroke-width="2"/>
+  <rect x="82" y="82" width="1036" height="1436" rx="56" stroke="rgba(255, 255, 255, 0.18)" stroke-width="2"/>
+  <rect x="120" y="120" width="960" height="1360" rx="36" stroke="rgba(255, 255, 255, 0.08)" stroke-width="2"/>
+  <rect x="140" y="144" width="920" height="10" rx="5" fill="url(#stripe)"/>
+  <text x="140" y="196" fill="rgba(255, 255, 255, 0.72)" font-size="30" font-weight="700" letter-spacing="0.24em" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">FOVERA CLASSICS</text>
+  <text x="140" y="258" fill="#EFCB68" font-size="22" font-weight="700" letter-spacing="0.36em" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">PUBLIC DOMAIN EDITION</text>
+  <text x="140" y="290" fill="#F8FBFF" font-size="92" font-weight="600" letter-spacing="-0.04em" font-family="Iowan Old Style, Baskerville, Times New Roman, serif">Kaçırılan</text>
+  <text x="140" y="470" fill="rgba(255, 255, 255, 0.82)" font-size="38" font-weight="600" letter-spacing="0.14em" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">ROBERT LOUIS STEVENSON</text>
+  <path d="M140 520H434" stroke="rgba(255, 255, 255, 0.22)" stroke-width="3"/>
+  <path d="M140 910C258 780 390 700 534 704C688 708 828 796 940 928" stroke="rgba(239, 203, 104, 0.38)" stroke-width="20" stroke-linecap="round" opacity="0.9"/>
+  <path d="M162 910C284 794 404 734 532 738C668 742 802 820 916 928" stroke="#EFCB68" stroke-width="8" stroke-linecap="round"/>
+  <text x="140" y="1432" fill="rgba(255, 255, 255, 0.76)" font-size="28" font-weight="600" letter-spacing="0.22em" font-family="Avenir Next, Helvetica Neue, Arial, sans-serif">FOCUSED READING • CURATED FOR FOVERA</text>
+</svg>

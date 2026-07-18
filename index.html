@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#07070a" />
+  <meta name="description" content="Fovera is a focused reading app that keeps every word centered, supports bilingual stories, and helps you read faster with calm, gesture-based control." />
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
+  <meta name="application-name" content="Fovera" />
+  <meta name="apple-mobile-web-app-title" content="Fovera" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta property="og:site_name" content="Fovera" />
+  <meta property="og:title" content="Fovera | The new era of focused reading." />
+  <meta property="og:description" content="A focused reading web app with centered words, bilingual stories, adjustable pacing, and distraction-free reading flow." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/icons/icon-512.png" />
+  <meta property="og:image:alt" content="Fovera app icon" />
+  <meta property="og:url" content="/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Fovera | The new era of focused reading." />
+  <meta name="twitter:description" content="A focused reading web app with centered words, bilingual stories, adjustable pacing, and distraction-free reading flow." />
+  <meta name="twitter:image" content="/icons/icon-512.png" />
+  <link rel="canonical" href="/" id="canonical-link" />
+  <link rel="icon" href="./icons/icon-192.png" />
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="./icons/icon-192.png" />
+  <script type="application/ld+json" id="structured-data"></script>
+  <title>Fovera | The new era of focused reading.</title>
+</head>
+<body>
+  <div id="app" aria-label="Reader" role="application">
+    <div id="progress-bar" aria-hidden="true"></div>
+    <div id="book-intro" aria-hidden="true"></div>
+    <div id="start-hint" role="status">Tap anywhere to begin</div>
+    <section id="onboarding-tour" aria-hidden="true" class="hidden" inert>
+      <div class="onboarding-backdrop" aria-hidden="true"></div>
+      <div class="onboarding-shell">
+        <article class="onboarding-panel" aria-labelledby="onboarding-title">
+          <div class="onboarding-panel-top">
+            <div class="onboarding-brand">
+              <span class="onboarding-brand-kicker" id="onboarding-kicker">Fovera Flow</span>
+              <span class="onboarding-step-counter" id="onboarding-step-counter">01 / 04</span>
+            </div>
+            <button class="onboarding-skip-btn" id="onboarding-skip" type="button">Skip tour</button>
+          </div>
+
+          <div class="onboarding-stage">
+            <div class="onboarding-demo" id="onboarding-demo" data-step="focus"></div>
+          </div>
+
+          <div class="onboarding-copy-block">
+            <p class="onboarding-title" id="onboarding-title">Every word stays centered. Your control stays effortless.</p>
+            <p class="onboarding-copy" id="onboarding-copy">Tap anywhere to begin, pause, or resume without chasing controls around the screen.</p>
+            <div class="onboarding-points" id="onboarding-points"></div>
+          </div>
+
+          <div class="onboarding-panel-bottom">
+            <div class="onboarding-progress" id="onboarding-progress" aria-hidden="true"></div>
+            <div class="onboarding-actions">
+              <button class="onboarding-nav-btn" id="onboarding-prev" type="button">Back</button>
+              <button class="onboarding-nav-btn primary" id="onboarding-next" type="button">Next</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="completion-panel" aria-live="polite" aria-hidden="true" class="hidden"></section>
+    <div id="center-word" aria-live="polite"></div>
+    <div id="center-word-translation" aria-hidden="true"></div>
+    <div id="browse-layer" aria-hidden="true"></div>
+    <div id="speed-badge">x1.0</div>
+    <div id="resume-countdown">3</div>
+    <div id="page-indicator" aria-live="polite"></div>
+    <button id="page-chip" type="button" title="Pages">Page 1 / 1</button>
+    <button id="page-sheet-backdrop" type="button" aria-label="Close pages"></button>
+    <section id="page-sheet" aria-hidden="true" aria-label="Pages" inert>
+      <div class="page-sheet-header">
+        <div class="page-sheet-heading">
+          <span class="page-sheet-kicker">Fovera Flow</span>
+          <h2 id="page-sheet-title">Pages</h2>
+          <p id="page-sheet-copy">Choose a page to restart from there.</p>
+        </div>
+        <button id="page-sheet-close" type="button" aria-label="Close pages">&times;</button>
+      </div>
+      <div id="page-sheet-list"></div>
+    </section>
+    <button id="menu-btn" aria-label="Open library" type="button">
+      <span></span><span></span><span></span>
+    </button>
+    <button id="settings-btn" aria-label="Open settings" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 8.3a3.7 3.7 0 1 0 0 7.4 3.7 3.7 0 0 0 0-7.4Zm9 4.56-1.88-.76a7.33 7.33 0 0 0-.44-1.05l.8-1.87a.92.92 0 0 0-.2-1.02l-1.47-1.47a.92.92 0 0 0-1.03-.2l-1.86.8a7.26 7.26 0 0 0-1.06-.44L13.1 3a.92.92 0 0 0-.9-.7h-2.08a.92.92 0 0 0-.9.7l-.76 1.88c-.36.1-.71.24-1.05.44l-1.87-.8a.92.92 0 0 0-1.02.2L3.05 6.2a.92.92 0 0 0-.2 1.03l.8 1.86c-.2.34-.34.7-.44 1.06L1.3 10.9a.92.92 0 0 0-.7.9v2.08c0 .4.27.76.66.9l1.89.76c.1.36.24.71.44 1.05l-.8 1.87a.92.92 0 0 0 .2 1.02l1.47 1.47c.29.3.73.38 1.03.2l1.86-.8c.34.2.7.34 1.06.44l.76 1.89c.14.39.5.66.9.66h2.08c.4 0 .76-.27.9-.66l.76-1.89c.36-.1.71-.24 1.05-.44l1.87.8c.3.18.74.1 1.02-.2l1.47-1.47c.3-.29.38-.72.2-1.02l-.8-1.87c.2-.34.34-.69.44-1.05l1.89-.76c.39-.14.66-.5.66-.9V11.8a.92.92 0 0 0-.7-.9Z" fill="currentColor" />
+      </svg>
+    </button>
+  </div>
+
+  <aside id="library" aria-label="Library" aria-hidden="true" inert>
+    <div class="lib-header">
+      <div class="lib-brand">
+        <span class="lib-title">Fovera</span>
+        <span class="lib-subtitle" id="lib-subtitle">The new era of focused reading.</span>
+      </div>
+      <button class="lib-close" id="lib-close" type="button" aria-label="Close library">&times;</button>
+    </div>
+    <div class="lib-content" id="lib-content">
+      <div class="lib-tabs-shell">
+        <div class="lib-tabs" role="tablist">
+          <button class="lib-tab active" data-tab="preset" role="tab" aria-selected="true" type="button">Stories</button>
+          <button class="lib-tab" data-tab="custom" role="tab" aria-selected="false" type="button">My Books</button>
+        </div>
+      </div>
+
+      <section class="lib-overview" aria-label="Current reading">
+        <div class="lib-overview-main">
+          <span class="lib-overview-kicker" id="lib-overview-kicker">Current Reading</span>
+          <h1 class="lib-overview-title" id="lib-overview-title">Alice's Adventures in Wonderland</h1>
+          <div class="lib-overview-meta" aria-live="polite">
+            <span id="lib-overview-author">Lewis Carroll</span>
+            <span class="lib-overview-meta-dot" aria-hidden="true"></span>
+            <span id="lib-overview-pages">6 pages</span>
+          </div>
+          <p class="lib-overview-body" id="lib-overview-body">Return to your current story or switch shelves below.</p>
+          <button class="lib-overview-action" id="lib-overview-action" type="button">Continue Reading</button>
+        </div>
+        <div class="lib-overview-side">
+          <button class="lib-current-card" id="lib-current-card" type="button" aria-label="Continue reading">
+            <div class="lib-current-card-media" id="lib-current-card-media"></div>
+            <div class="lib-current-card-copy">
+              <span class="lib-current-card-kicker" id="lib-current-card-kicker">Reading Now</span>
+              <h2 class="lib-current-card-title" id="lib-current-card-title">Alice's Adventures in Wonderland</h2>
+              <p class="lib-current-card-meta">
+                <span id="lib-current-card-author">Lewis Carroll</span>
+                <span class="lib-current-card-separator" aria-hidden="true">&bull;</span>
+                <span id="lib-current-card-pages">6 pages</span>
+              </p>
+            </div>
+          </button>
+          <div class="lib-overview-metrics">
+            <article class="lib-stat">
+              <span class="lib-stat-value" id="lib-stat-stories-value">6</span>
+              <span class="lib-stat-label" id="lib-stat-stories-label">Curated stories</span>
+            </article>
+            <article class="lib-stat">
+              <span class="lib-stat-value" id="lib-stat-custom-value">0</span>
+              <span class="lib-stat-label" id="lib-stat-custom-label">Personal books</span>
+            </article>
+            <article class="lib-stat">
+              <span class="lib-stat-value" id="lib-stat-themes-value">6</span>
+              <span class="lib-stat-label" id="lib-stat-themes-label">Theme presets</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="lib-section-head" id="lib-section-head" aria-live="polite">
+        <div class="lib-section-copy">
+          <span class="lib-section-kicker" id="lib-section-kicker">Stories</span>
+          <h2 class="lib-section-title" id="lib-section-title">Story Shelf</h2>
+          <p class="lib-section-body" id="lib-section-body">Curated public-domain stories prepared for focused reading.</p>
+        </div>
+        <button class="lib-section-action" id="lib-section-action" type="button" hidden>Add Book</button>
+      </section>
+
+      <div class="card-grid" id="preset-grid"></div>
+      <div class="card-grid" id="custom-grid" style="display:none;"></div>
+      <div class="settings-panel" id="settings-panel" style="display:none;">
+        <section class="settings-shell">
+          <div class="settings-header">
+            <div class="settings-header-row">
+              <div class="settings-header-copy">
+                <span class="settings-kicker" id="settings-kicker">Reader Setup</span>
+                <h2 class="settings-title" id="settings-title">Settings</h2>
+                <p class="settings-copy" id="settings-copy">Language, themes, and reading atmosphere.</p>
+              </div>
+              <button class="settings-restore-btn" id="settings-restore-btn" type="button">Restore defaults</button>
+            </div>
+          </div>
+
+          <div class="settings-tabs-shell">
+            <div class="settings-tabs" role="tablist" aria-label="Settings sections">
+              <button class="settings-tab active" id="settings-guide-tab" data-settings-tab="guide" role="tab" aria-selected="true" aria-controls="settings-guide-panel" type="button">Guide</button>
+              <button class="settings-tab" id="settings-features-tab" data-settings-tab="features" role="tab" aria-selected="false" aria-controls="settings-features-panel" type="button">Features</button>
+              <button class="settings-tab" id="settings-visuals-tab" data-settings-tab="visuals" role="tab" aria-selected="false" aria-controls="settings-visuals-panel" type="button">Visuals</button>
+            </div>
+          </div>
+
+          <div class="settings-tab-panel active" id="settings-guide-panel" role="tabpanel" aria-labelledby="settings-guide-tab">
+            <section class="settings-section settings-guide-panel">
+              <div class="settings-guide">
+                <div class="settings-guide-header">
+                  <span class="settings-guide-title" id="controls-title">Reading Controls</span>
+                  <p class="settings-guide-copy" id="controls-copy">Learn the gestures once and they stay consistent across every story.</p>
+                </div>
+                <div class="settings-guide-hero">
+                  <div class="settings-guide-hero-copy">
+                    <span class="settings-guide-hero-kicker" id="guide-tour-kicker">Guided Tour</span>
+                    <h3 class="settings-guide-hero-title" id="guide-tour-title">Walk through Fovera before your first story.</h3>
+                    <p class="settings-guide-hero-body" id="guide-tour-copy">See pace, browse, multi-word focus, and inline translation in motion.</p>
+                  </div>
+                  <button class="settings-guide-tour-btn" id="guide-tour-btn" type="button">Start Tour</button>
+                </div>
+                <div class="settings-guide-grid">
+                  <article class="settings-guide-card">
+                    <span class="settings-guide-card-label" id="control-tap-label">Tap</span>
+                    <p class="settings-guide-card-copy" id="control-tap-copy">Start or pause from anywhere on the screen.</p>
+                  </article>
+                  <article class="settings-guide-card">
+                    <span class="settings-guide-card-label" id="control-swipe-label">Swipe</span>
+                    <p class="settings-guide-card-copy" id="control-swipe-copy">Swipe left to speed up. Swipe right to slow down.</p>
+                  </article>
+                  <article class="settings-guide-card">
+                    <span class="settings-guide-card-label" id="control-browse-label">Browse</span>
+                    <p class="settings-guide-card-copy" id="control-browse-copy">Drag up or down to preview the surrounding sentence flow.</p>
+                  </article>
+                  <article class="settings-guide-card">
+                    <span class="settings-guide-card-label" id="control-pages-label">Pages</span>
+                    <p class="settings-guide-card-copy" id="control-pages-copy">Use the page pill to jump anywhere in the story.</p>
+                  </article>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="settings-tab-panel" id="settings-features-panel" role="tabpanel" aria-labelledby="settings-features-tab" hidden>
+            <section class="settings-section">
+              <label class="language-control settings-control" for="language-select">
+                <span id="language-label">Language</span>
+                <select id="language-select">
+                  <option value="en">English</option>
+                  <option value="tr">Türkçe</option>
+                </select>
+              </label>
+
+              <label class="settings-switch" for="inline-translation-toggle">
+                <div class="settings-switch-copy">
+                  <span class="settings-switch-label" id="inline-translation-label">Inline Translation</span>
+                  <p class="settings-switch-hint" id="inline-translation-copy">Show Turkish under each focused English word when a bilingual edition is available.</p>
+                </div>
+                <span class="settings-switch-control">
+                  <input id="inline-translation-toggle" type="checkbox" />
+                  <span class="settings-switch-track" aria-hidden="true">
+                    <span class="settings-switch-thumb"></span>
+                  </span>
+                </span>
+              </label>
+
+              <div class="settings-choice-card" aria-labelledby="visible-words-label">
+                <div class="settings-switch-copy">
+                  <span class="settings-switch-label" id="visible-words-label">Visible Words</span>
+                  <p class="settings-switch-hint" id="visible-words-copy">Keep 1, 2, or 3 words in focus at once. The flow still advances one word at a time.</p>
+                </div>
+                <div class="word-count-group" id="word-count-group" role="group" aria-label="Visible words">
+                  <button class="word-count-option active" id="word-count-1" data-word-count="1" type="button" aria-pressed="true">1</button>
+                  <button class="word-count-option" id="word-count-2" data-word-count="2" type="button" aria-pressed="false">2</button>
+                  <button class="word-count-option" id="word-count-3" data-word-count="3" type="button" aria-pressed="false">3</button>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <div class="settings-tab-panel" id="settings-visuals-panel" role="tabpanel" aria-labelledby="settings-visuals-tab" hidden>
+            <div class="settings-visuals-layout">
+              <section class="settings-section settings-section-theme" id="theme-section">
+                <div class="settings-header compact">
+                  <span class="settings-kicker" id="theme-kicker">Theme Studio</span>
+                  <p class="settings-copy" id="theme-copy">Preview first, then apply. Build your own theme with readable contrast.</p>
+                </div>
+
+                <div class="theme-grid" id="theme-grid"></div>
+
+                <div class="theme-preview-shell">
+                  <div class="theme-preview-header">
+                    <span id="theme-preview-label">Live Preview</span>
+                    <span class="theme-preview-state" id="theme-preview-state">Draft</span>
+                  </div>
+                  <div class="theme-preview-card" id="theme-preview-card"></div>
+                  <div class="theme-apply-dock" id="theme-apply-dock">
+                    <button class="btn-save settings-apply-btn" id="theme-apply-btn" type="button">Apply Theme</button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="settings-section">
+                <div class="settings-header compact">
+                  <span class="settings-kicker" id="custom-theme-label">Custom Theme</span>
+                  <p class="settings-copy" id="custom-theme-copy">Adjust the main word, supporting text, accent, and gradient balance.</p>
+                </div>
+
+                <div class="custom-theme-grid">
+                  <label class="settings-control" for="custom-base-theme">
+                    <span id="base-theme-label">Base Theme</span>
+                    <select id="custom-base-theme">
+                      <option value="midnight">Midnight</option>
+                      <option value="paper">Paper</option>
+                      <option value="sage">Sage</option>
+                      <option value="ember">Ember</option>
+                      <option value="mist">Mist</option>
+                      <option value="linen">Linen</option>
+                    </select>
+                  </label>
+
+                  <label class="settings-control color-control" for="main-word-color">
+                    <span id="main-word-label">Main Word</span>
+                    <input id="main-word-color" type="color" value="#f5f7fb" />
+                  </label>
+
+                  <label class="settings-control color-control" for="secondary-text-color">
+                    <span id="secondary-text-label">Secondary Text</span>
+                    <input id="secondary-text-color" type="color" value="#d8e1ef" />
+                  </label>
+
+                  <label class="settings-control color-control" for="accent-color">
+                    <span id="accent-color-label">Accent</span>
+                    <input id="accent-color" type="color" value="#8ab4f8" />
+                  </label>
+
+                  <label class="settings-control color-control" for="background-start-color">
+                    <span id="background-start-label">Background Start</span>
+                    <input id="background-start-color" type="color" value="#0f1b2d" />
+                  </label>
+
+                  <label class="settings-control color-control" for="background-end-color">
+                    <span id="background-end-label">Background End</span>
+                    <input id="background-end-color" type="color" value="#07111f" />
+                  </label>
+
+                  <label class="settings-control range-control" for="gradient-balance">
+                    <span id="gradient-balance-label">Gradient Balance</span>
+                    <div class="range-row">
+                      <input id="gradient-balance" type="range" min="35" max="80" step="1" value="56" />
+                      <output id="gradient-balance-output">56%</output>
+                    </div>
+                  </label>
+                </div>
+
+                <button class="settings-reset-btn" id="theme-reset-btn" type="button">Reset Custom</button>
+              </section>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="settings-modal hidden" id="settings-restore-modal" aria-hidden="true" inert>
+      <button class="settings-modal-backdrop" id="settings-restore-backdrop" type="button" aria-label="Close restore defaults dialog"></button>
+      <section class="settings-modal-card" role="dialog" aria-modal="true" aria-labelledby="settings-restore-title">
+        <div class="settings-modal-top">
+          <span class="settings-modal-kicker" id="settings-restore-kicker">Restore defaults</span>
+          <button class="settings-modal-close" id="settings-restore-close" type="button" aria-label="Close">&times;</button>
+        </div>
+        <div class="settings-modal-body">
+          <h3 class="settings-modal-title" id="settings-restore-title">Reset reader settings?</h3>
+          <p class="settings-modal-copy" id="settings-restore-copy">
+            Language, theme, speed, visible words, and inline translation will return to their default state.
+          </p>
+          <div class="settings-modal-note" id="settings-restore-note">
+            Your reading stats, current progress, and library stay exactly as they are.
+          </div>
+        </div>
+        <div class="settings-modal-actions">
+          <button class="settings-modal-btn" id="settings-restore-cancel" type="button">Cancel</button>
+          <button class="settings-modal-btn danger" id="settings-restore-confirm" type="button">Restore defaults</button>
+        </div>
+      </section>
+    </div>
+  </aside>
+
+  <div id="add-modal" role="dialog" aria-label="Add a book" aria-hidden="true" inert>
+    <div class="add-header">
+      <span class="add-title">Add Book</span>
+      <button class="add-close" id="add-close" type="button" aria-label="Close">&times;</button>
+    </div>
+    <div class="add-content">
+      <section class="add-section add-section-upload">
+        <span class="add-section-label" id="upload-section-label">File</span>
+        <div class="upload-area" id="upload-area">
+          <div class="upload-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          </div>
+          <span class="upload-text">Drag and drop a file</span>
+          <span class="upload-hint">or tap to choose (.txt, .pdf)</span>
+        </div>
+        <p class="upload-policy" id="upload-policy">Text-based PDFs only, up to 64 MB and 1,200 source pages.</p>
+        <div class="upload-feedback" id="upload-feedback" hidden>
+          <span class="upload-feedback-status" id="upload-feedback-status"></span>
+          <p class="upload-feedback-copy" id="upload-feedback-copy"></p>
+          <ul class="upload-feedback-list" id="upload-feedback-list"></ul>
+        </div>
+        <input type="file" id="file-input" accept=".txt,.pdf" />
+      </section>
+      <section class="add-section add-section-manual">
+        <span class="add-section-label" id="text-section-label">Text</span>
+        <input type="text" id="book-title-input" placeholder="Book title..." />
+        <textarea id="book-text-input" placeholder="Paste your book here...
+
+Separate paragraphs with a blank line.
+Split pages with '---PAGE---'."></textarea>
+        <button class="btn-save" id="btn-save-text" type="button">Save</button>
+      </section>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

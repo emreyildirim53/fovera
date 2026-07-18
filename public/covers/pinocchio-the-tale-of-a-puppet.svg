@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title author">
+  <title>Pinocchio: The Tale of a Puppet</title>
+  <desc>Original cover artwork with title and author.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d1e12"/>
+      <stop offset="45%" stop-color="#8c5a2b"/>
+      <stop offset="100%" stop-color="#f4d19b"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <rect x="88" y="90" width="424" height="620" rx="28" fill="#000" opacity="0.16"/>
+  <path d="M300 182c52 0 94 40 94 90 0 24-10 46-26 62l18 120c4 27-16 50-44 50h-84c-28 0-48-23-44-50l18-120c-16-16-26-38-26-62 0-50 42-90 94-90z" fill="#f3c784"/>
+  <rect x="258" y="244" width="28" height="16" rx="8" fill="#5b371a"/>
+  <rect x="314" y="244" width="28" height="16" rx="8" fill="#5b371a"/>
+  <path d="M300 276c18 2 36 12 72 18" stroke="#d98d44" stroke-width="10" stroke-linecap="round"/>
+  <path d="M260 318c22 18 58 18 80 0" fill="none" stroke="#7a3d1d" stroke-width="8" stroke-linecap="round"/>
+  <path d="M300 146l64 46h-128z" fill="#2f4f4f"/>
+  <text x="56" y="618" fill="#fff6ea" font-size="44" font-family="Georgia, serif" font-weight="700">Pinocchio</text>
+  <text x="56" y="666" fill="#fff6ea" font-size="30" font-family="Georgia, serif" font-weight="700">The Tale of a Puppet</text>
+  <text x="58" y="722" fill="#f4d19b" font-size="24" font-family="Arial, sans-serif" letter-spacing="2">CARLO COLLODI</text>
+</svg>

@@ -1,0 +1,26 @@
+{
+  "name": "fovera",
+  "version": "1.0.0",
+  "description": "Fovera — the new era of focused reading",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc -b --noEmit",
+    "sync:public-domain-books": "node scripts/sync-public-domain-books.mjs",
+    "generate:turkish-books": "node scripts/generate-turkish-books.mjs",
+    "generate:word-translations": "node scripts/generate-word-translations.mjs"
+  },
+  "devDependencies": {
+    "google-translate-api-x": "^10.7.3",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
+    "vite-plugin-pwa": "^0.20.5"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.2.8",
+    "@fontsource-variable/newsreader": "^5.2.10",
+    "pdfjs-dist": "^6.1.200"
+  }
+}

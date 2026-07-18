@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-labelledby="title author">
+  <title>A Little Princess</title>
+  <desc>Original cover artwork with title and author.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#432371"/>
+      <stop offset="55%" stop-color="#714674"/>
+      <stop offset="100%" stop-color="#f9c5d1"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="300" cy="250" r="120" fill="#fff5f7" opacity="0.92"/>
+  <path d="M300 160l18 30 34 6-24 24 6 34-34-16-34 16 6-34-24-24 34-6z" fill="#ffd166"/>
+  <path d="M246 282c18-36 50-56 54-56s36 20 54 56l18 104H228z" fill="#f28482"/>
+  <rect x="256" y="262" width="88" height="34" rx="10" fill="#ffcad4"/>
+  <path d="M168 486h264v40H168z" fill="#fff5f7" opacity="0.22"/>
+  <text x="56" y="626" fill="#fff7fb" font-size="56" font-family="Georgia, serif" font-weight="700">A Little Princess</text>
+  <text x="58" y="696" fill="#ffe5ec" font-size="24" font-family="Arial, sans-serif" letter-spacing="2">FRANCES HODGSON BURNETT</text>
+</svg>

@@ -1,0 +1,10 @@
+# The Adventures of Sherlock Holmes
+
+- Source: https://www.gutenberg.org/ebooks/1661
+- Plain text: https://www.gutenberg.org/ebooks/1661.txt.utf-8
+- Author: Arthur Conan Doyle (1859-1930)
+- Checked on: July 18, 2026
+- Project Gutenberg catalog status: "Public domain in the USA."
+- Fovera note: the author died before July 18, 1956, so the original work is also outside a standard life-plus-70 term as of July 18, 2026.
+
+This local note was generated to keep the provenance beside the downloaded text asset.
