@@ -674,10 +674,10 @@ export class I18n {
     setMetaContent('meta[name="twitter:title"]', 'content', metaTitle);
     setMetaContent('meta[name="twitter:description"]', 'content', this.t('appDescription'));
     const absoluteUrl = new URL(import.meta.env.BASE_URL || '/', window.location.origin).toString();
-    const imageUrl = new URL('icons/icon-512.png', absoluteUrl).toString();
+    const imageUrl = new URL('og-image.jpg', absoluteUrl).toString();
     setMetaContent('meta[property="og:url"]', 'content', absoluteUrl);
     setMetaContent('meta[property="og:image"]', 'content', imageUrl);
-    setMetaContent('meta[property="og:image:alt"]', 'content', `${this.t('appTitle')} app icon`);
+    setMetaContent('meta[property="og:image:alt"]', 'content', `${this.t('appTitle')} — ${this.t('brandSubtitle')}`);
     setMetaContent('meta[name="twitter:image"]', 'content', imageUrl);
     const canonical = document.querySelector<HTMLLinkElement>('#canonical-link');
     canonical?.setAttribute('href', absoluteUrl);
@@ -685,10 +685,12 @@ export class I18n {
     if (structuredDataEl) {
       structuredDataEl.textContent = JSON.stringify({
         '@context': 'https://schema.org',
-        '@type': 'SoftwareApplication',
+        '@type': 'WebApplication',
+        '@id': new URL('#app', absoluteUrl).toString(),
         name: this.t('appTitle'),
         applicationCategory: 'EducationalApplication',
-        operatingSystem: 'Web',
+        operatingSystem: 'Web browser (PWA)',
+        isAccessibleForFree: true,
         description: this.t('appDescription'),
         url: absoluteUrl,
         image: imageUrl,
@@ -699,11 +701,13 @@ export class I18n {
           price: '0',
           priceCurrency: 'USD',
         },
-        publisher: {
-          '@type': 'Organization',
-          name: this.t('appTitle'),
-          url: absoluteUrl,
+        author: {
+          '@type': 'Person',
+          '@id': 'https://www.mryildirim.com/#person',
+          name: 'Emre Yıldırım',
+          url: 'https://www.mryildirim.com/',
         },
+        sameAs: ['https://www.mryildirim.com/portfolio/fovera', 'https://github.com/emreyildirim53/fovera'],
       });
     }
 
