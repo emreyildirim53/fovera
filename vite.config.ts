@@ -3,7 +3,10 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const siteUrl = (env.VITE_SITE_URL || 'https://fovera.app').replace(/\/+$/, '');
+  // Live domain. fovera.app currently serves a parked "Coming Soon" page, so pointing
+  // robots/sitemap/canonical there sent crawlers away from the real site.
+  // Override with VITE_SITE_URL when the app moves to another domain.
+  const siteUrl = (env.VITE_SITE_URL || 'https://fovera.mryildirim.com').replace(/\/+$/, '');
   const today = new Date().toISOString().split('T')[0] ?? '2026-07-18';
 
   return {
@@ -15,6 +18,15 @@ export default defineConfig(({ mode }) => {
     plugins: [
       {
         name: 'fovera-seo-artifacts',
+        // Social crawlers (WhatsApp, X, Facebook) don't run JS, so the runtime i18n
+        // update never reaches them: ship absolute og/twitter/canonical URLs in the HTML.
+        transformIndexHtml(html) {
+          return html
+            .replace(/(<meta property="og:image" content=")\/([^"]*")/, `$1${siteUrl}/$2`)
+            .replace(/(<meta name="twitter:image" content=")\/([^"]*")/, `$1${siteUrl}/$2`)
+            .replace('<meta property="og:url" content="/" />', `<meta property="og:url" content="${siteUrl}/" />`)
+            .replace('<link rel="canonical" href="/" id="canonical-link" />', `<link rel="canonical" href="${siteUrl}/" id="canonical-link" />`);
+        },
         generateBundle() {
           this.emitFile({
             type: 'asset',
